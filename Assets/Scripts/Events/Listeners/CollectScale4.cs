@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class CollectScale4 : MonoBehaviour
 {
-    public UnityEvent CollectScale = new UnityEvent();
-    
+    CollectScaleCount scalecounter;
+    int scaleCounter; // Define scaleCounter as an integer
+
     // Start is called before the first frame update
     void Start()
     {
-        CollectScaleCount.I.scaleCount = GetComponent<CollectScaleCount>().scaleCount;
-        
-        CollectScale.AddListener(Listener);
+        scalecounter = GetComponent<CollectScaleCount>(); // Initialize scalecounter
+        CollectScaleCount.I.scaleCount = scalecounter.scaleCount; // Access the scaleCount property/field
     }
 
     // Update is called once per frame
@@ -20,11 +21,9 @@ public class CollectScale4 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            CollectScale.Invoke();
+            scaleCounter += 1; // Increment scaleCounter
 
-            CollectScaleCount.I.scaleCount += 1;
-
-            Destroy(gameObject);
+            Destroy(gameObject); // Destroy the current GameObject
         }
     }
 
