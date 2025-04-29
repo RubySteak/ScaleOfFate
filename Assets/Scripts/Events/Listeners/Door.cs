@@ -4,28 +4,27 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CollectScale4 : MonoBehaviour
+public class Door : MonoBehaviour
 {
-    public UnityEvent UpdateScale = new UnityEvent();
+    public UnityEvent Escape = new UnityEvent();
     
     // Start is called before the first frame update
     void Start()
     {
-        UpdateScale.AddListener(Listener);
+        Escape.AddListener(Listener);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            UpdateScale.Invoke();
-            Destroy(gameObject);
+            Escape.Invoke();
         }
     }
 
     void Listener()
     {
-        Debug.Log("Scale 4 has been collected");
+        Debug.Log("Scale 1 has been collected");
     }
 }

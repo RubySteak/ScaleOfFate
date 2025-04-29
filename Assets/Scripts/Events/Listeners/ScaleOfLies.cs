@@ -3,29 +3,27 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-
-public class CollectScale4 : MonoBehaviour
+public class ScaleOfLies : MonoBehaviour
 {
-    public UnityEvent UpdateScale = new UnityEvent();
+    public UnityEvent Lie = new UnityEvent();
     
     // Start is called before the first frame update
     void Start()
     {
-        UpdateScale.AddListener(Listener);
+        Lie.AddListener(Listener);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            UpdateScale.Invoke();
-            Destroy(gameObject);
+            Lie.Invoke();
         }
     }
 
     void Listener()
     {
-        Debug.Log("Scale 4 has been collected");
+        Debug.Log("Surely he ment well");
     }
 }

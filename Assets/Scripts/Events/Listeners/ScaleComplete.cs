@@ -7,15 +7,19 @@ public class ScaleComplete : MonoBehaviour
 {
     public UnityEvent CheckScaleCount = new UnityEvent();
 
-    CollectScaleCount scalecount;
-    
+    private CollectScaleCount scaleCountComponent;
+
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("setScale", .2f);
- 
-        print(CollectScaleCount.I);
-        print(GetComponent<CollectScaleCount>().scaleCount);
+        // Assign the CollectScaleCount component to scaleCountComponent
+        scaleCountComponent = GetComponent<CollectScaleCount>();
+        if (scaleCountComponent == null)
+        {
+            Debug.LogError("CollectScaleCount component not found on the GameObject.");
+        }
+
+        // Optional: Add the Listener method to the UnityEvent
         CheckScaleCount.AddListener(Listener);
     }
 
@@ -24,18 +28,20 @@ public class ScaleComplete : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            print(1);
-            if (scalecount.scaleCount == 4)
+            if (scaleCountComponent != null)
             {
-                print(2);
-                CheckScaleCount.Invoke();
+                print("Scales: " + scaleCountComponent.scaleCount);
+
+                if (scaleCountComponent.scaleCount == 4) // Checks if the scaleCountComponent int is 4
+                {
+                    CheckScaleCount.Invoke();
+                }
+            }
+            else
+            {
+                Debug.LogError("scaleCountComponent is null. Ensure it is assigned properly.");
             }
         }
-    }
-
-    void setScale()
-    {
-        CollectScaleCount.I.scaleCount = GetComponent<CollectScaleCount>().scaleCount;
     }
 
     void Listener()

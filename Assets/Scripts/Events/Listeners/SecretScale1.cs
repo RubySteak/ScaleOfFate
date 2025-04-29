@@ -4,23 +4,22 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CollectScale1 : MonoBehaviour
+public class SecretScale1 : MonoBehaviour
 {
-    public UnityEvent UpdateScale = new UnityEvent();
+    public UnityEvent Secret1 = new UnityEvent();
     
-    // Start is called before the first frame update
+    // Start is called before the first frame updat
     void Start()
     {
-        UpdateScale.AddListener(Listener);
+        Secret1.AddListener(Listener);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            UpdateScale.Invoke();
-            Destroy(gameObject);
+            Secret1.Invoke();
         }
     }
 

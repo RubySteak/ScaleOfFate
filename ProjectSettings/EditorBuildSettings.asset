@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Long before time had a name.unity
     guid: 28442ef9d0fda674a9abf9e44e0e3308
+  - enabled: 1
+    path: Assets/Scenes/End.unity
+    guid: e305d3dac055be8468bfa321490de52d
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

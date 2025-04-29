@@ -8,10 +8,14 @@ public class CollectScaleCount : MonoBehaviour
     public static CollectScaleCount I;
 
     public int scaleCount = 0;
-
     private void Start()
     {
         if (I == null)
-            I = this;
+        I = this;
+    }
+
+    public void AddScale()
+    {
+        scaleCount++;
     }
 }

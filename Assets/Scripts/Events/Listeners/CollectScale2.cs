@@ -6,14 +6,12 @@ using UnityEngine.Events;
 
 public class CollectScale2 : MonoBehaviour
 {
-    CollectScaleCount scalecounter;
-    int scaleCounter; // Define scaleCounter as an integer
-
+    public UnityEvent UpdateScale = new UnityEvent();
+    
     // Start is called before the first frame update
     void Start()
     {
-        scalecounter = GetComponent<CollectScaleCount>(); // Initialize scalecounter
-        CollectScaleCount.I.scaleCount = scalecounter.scaleCount; // Access the scaleCount property/field
+        UpdateScale.AddListener(Listener);
     }
 
     // Update is called once per frame
@@ -21,14 +19,13 @@ public class CollectScale2 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            scaleCounter += 1; // Increment scaleCounter
-
-            Destroy(gameObject); // Destroy the current GameObject
+            UpdateScale.Invoke();
+            Destroy(gameObject);
         }
     }
 
     void Listener()
     {
-        Debug.Log("Scale 1 has been collected");
+        Debug.Log("Scale 2 has been collected");
     }
 }
